@@ -8,14 +8,15 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
 
 public class MainActivity extends AppCompatActivity
 {
+    
     Random rnd = new Random();
-    int newOne = 1;
     int num1 = 0;
     int score = 0;
     int num2 = 0;
@@ -26,25 +27,11 @@ public class MainActivity extends AppCompatActivity
     String ans3AsStr = "";
     int ans3Int = 0;
     //----------------------------------------------------------------
-    Button btn1;
-    Button btn2;
-    Button btn3;
+    Button btn1,btn2,btn3;
     ImageButton newGame;
-    //----------------------------------------------------------------
-    ImageView iv1;
-    ImageView iv2;
-    ImageView iv3;
-    //----------------------------------------------------------------
-    TextView firstNumQ1;
-    TextView firstNumQ2;
-    TextView firstNumQ3;
-    TextView secNumQ2;
-    TextView secNumQ1;
-    TextView secNumQ3;
-    //----------------------------------------------------------------
-    EditText ed1;
-    EditText ed2;
-    EditText ed3;
+    ImageView iv1,iv2,iv3;
+    TextView firstNumQ1,firstNumQ2,firstNumQ3,secNumQ2,secNumQ1,secNumQ3;
+    EditText ed1,ed2,ed3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -107,12 +94,14 @@ public class MainActivity extends AppCompatActivity
             ans1Int = Integer.parseInt(ans1AsStr);
             if (ans1Int == num1 + num2)
             {
+                Toast.makeText(this, "CORRECT", Toast.LENGTH_SHORT).show();
                 iv1.setVisibility(View.VISIBLE);
                 iv1.setImageResource(R.drawable.v);
                 score +=1;
             }
             else
             {
+                Toast.makeText(this, "WRONG ANSWER", Toast.LENGTH_SHORT).show();
                 iv1.setVisibility(View.VISIBLE);
                 iv1.setImageResource(R.drawable.x);
             }
@@ -141,11 +130,13 @@ public class MainActivity extends AppCompatActivity
                 iv2.setVisibility(View.VISIBLE);
                 iv2.setImageResource(R.drawable.v);
                 score +=1;
+                Toast.makeText(this, "CORRECT", Toast.LENGTH_SHORT).show();
             }
             else
             {
                 iv2.setVisibility(View.VISIBLE);
                 iv2.setImageResource(R.drawable.x);
+                Toast.makeText(this, "WRONG ANSWER", Toast.LENGTH_SHORT).show();
             }
             num1 = num1+num2;
             num2 = rnd.nextInt(81)+10;
@@ -173,26 +164,36 @@ public class MainActivity extends AppCompatActivity
                 iv3.setVisibility(View.VISIBLE);
                 iv3.setImageResource(R.drawable.v);
                 score +=1;
+                Toast.makeText(this, "CORRECT", Toast.LENGTH_SHORT).show();
             }
             else
             {
                 iv3.setVisibility(View.VISIBLE);
                 iv3.setImageResource(R.drawable.x);
+                Toast.makeText(this, "WRONG ANSWER", Toast.LENGTH_SHORT).show();
             }
 
             switch (score)
             {
                 case 0:
                     newGame.setImageResource(R.drawable.score0);
+                    Toast.makeText(this, "score: 0%", Toast.LENGTH_SHORT).show();
+
                     break;
                 case 1:
                     newGame.setImageResource(R.drawable.score1);
+                    Toast.makeText(this, "score: 33%", Toast.LENGTH_SHORT).show();
+
                     break;
                 case 2:
                     newGame.setImageResource(R.drawable.score2);
+                    Toast.makeText(this, "score: 66%", Toast.LENGTH_SHORT).show();
+
                     break;
                 case 3:
                     newGame.setImageResource(R.drawable.score3);
+                    Toast.makeText(this, "score: 100%", Toast.LENGTH_SHORT).show();
+
                     break;
             }
             newGame.setVisibility(View.VISIBLE);
